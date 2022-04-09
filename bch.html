@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart wallet</title>
+    <link rel="stylesheet" href="bch.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
+    </style>
+    <script src="https://cdn.mainnet.cash/smartbch/smartbch-0.4.38.js"
+        integrity="sha384-SVt0Hucc+bcTfi16fcqFrb4eAzIr5BMvlQGDb1uAPMHXpNGAAm8xd/EOtXUEpFEM"
+        crossorigin="anonymous"></script>
+    <script src="bch.js"></script>
+</head>
+
+<body onload="start();">
+    <div id="bodyBox">
+    <div id="mainBox" class="box">
+        <button class="btn" onclick="newWallet();">New Wallet</button>
+        <button class="btn" onclick="importWallet();">Import Wallet</button>
+        <div>
+            <input id="seed" type="text" placeholder="Enter 12 word seed">
+        </div>
+    </div>
+
+    <div id="myWalletBox" class="box">
+        <div id="walletNav">
+            <input id="walletAddress" readonly>
+            <img src="copy.svg" alt="copy" id="copy" onclick="copyAddress();">
+            <img src="menu.svg" alt="menu" id="menu" onclick="toggleMenu()">
+        </div>
+
+        <div id="menuBox">
+            <li id="txLink" onclick="transaction();"></li>
+            <li onclick="openAccount();">Account</li>
+            <li>CreateToken</li>
+        </div>
+
+        <div id="walletBalance"></div>
+        <div>
+            <button class="btn" onclick="openSend();">Send</button>
+            <button class="btn" onclick="openReceive();">Receive</button>
+        </div>
+    </div>
+
+    <div id="receiveBox" class="box">
+        <p style="text-align: center;">
+            <img src="https://cdn.mainnet.cash/wait.svg" style="width: 15em;" id="deposit">
+        </p>
+        <button class="btn" onclick="closeReceive();">Close</button>
+    </div>
+
+    <div id="sendBox" class="box">
+        <h2>Send sBCH</h2>
+        <input type="text" id="address" placeholder="Enter Address">
+        <input type="number" id="amount" placeholder="Enter Amount">
+        <button id="maxAmount" onclick="maxAmount();">Max</button>
+
+        <div id="confirm">
+            <button class="btn" onclick="closeSend();">Close</button>
+            <button class="btn" onclick="withdraw();">Send</button>
+        </div>
+    </div>
+
+    <div id="accountBox" class="box">
+        <!-- <small>Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</small> -->
+        <button class="btn-2">Reset Account</button>
+        <button class="btn-2">Private Key</button>
+        <button class="btn-2">Mnemonic</button>
+
+        <button id="closeAccount" class="btn" onclick="closeAccount();">Close</button>
+    </div>
+</div>
+
+</body>
+
+</html>
