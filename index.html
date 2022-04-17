@@ -18,62 +18,100 @@
 
 <body onload="start();">
     <div id="bodyBox">
-    <div id="mainBox" class="box">
-        <button class="btn" onclick="newWallet();">New Wallet</button>
-        <button class="btn" onclick="importWallet();">Import Wallet</button>
-        <div>
-            <input id="seed" type="text" placeholder="Enter 12 word seed">
-        </div>
-    </div>
-
-    <div id="myWalletBox" class="box">
-        <div id="walletNav">
-            <input id="walletAddress" readonly>
-            <img src="copy.svg" alt="copy" id="copy" onclick="copyAddress();">
-            <img src="menu.svg" alt="menu" id="menu" onclick="toggleMenu()">
+        <div id="mainBox" class="box">
+            <button class="btn" onclick="newWallet();">New Wallet</button>
+            <button class="btn" onclick="importWallet();">Import Wallet</button>
+            <div>
+                <input id="seed" type="text" placeholder="Enter 12 word seed">
+            </div>
         </div>
 
-        <div id="menuBox">
-            <li id="txLink" onclick="transaction();"></li>
-            <li onclick="openAccount();">Account</li>
-            <li>CreateToken</li>
+        <div id="myWalletBox" class="box">
+            <div id="walletNav">
+                <input id="walletAddress" readonly>
+                <img src="copy.svg" alt="copy" id="copy" onclick="copyAddress();">
+                <img src="menu.svg" alt="menu" id="menu" onclick="toggleMenu()">
+            </div>
+
+            <div id="menuBox">
+                <li id="txLink" onclick="transaction();"></li>
+                <li onclick="openAccount();">Account</li>
+                <!-- <li>CreateToken</li> -->
+            </div>
+
+            <div id="walletBalance"></div>
+            <div>
+                <button class="btn" onclick="openSend();">Send</button>
+                <button class="btn" onclick="openReceive();">Receive</button>
+            </div>
         </div>
 
-        <div id="walletBalance"></div>
-        <div>
-            <button class="btn" onclick="openSend();">Send</button>
-            <button class="btn" onclick="openReceive();">Receive</button>
+        <div id="receiveBox" class="box">
+            <p style="text-align: center;">
+                <img src="https://cdn.mainnet.cash/wait.svg" style="width: 15em;" id="deposit">
+            </p>
+            <div id="receiveAdd">
+                <input id="walletAddress2" readonly>
+                <img src="copy.svg" alt="copy" id="copy" onclick="copyAddress();">
+            </div>
+            <button class="btn" onclick="closeReceive();">Close</button>
         </div>
-    </div>
 
-    <div id="receiveBox" class="box">
-        <p style="text-align: center;">
-            <img src="https://cdn.mainnet.cash/wait.svg" style="width: 15em;" id="deposit">
-        </p>
-        <button class="btn" onclick="closeReceive();">Close</button>
-    </div>
+        <div id="sendBox" class="box">
+            <h2>Send sBCH</h2>
+            <input type="text" id="address" placeholder="Enter Address">
+            <input type="number" id="amount" placeholder="Enter Amount">
+            <button id="maxAmount" onclick="maxAmount();">Max</button>
 
-    <div id="sendBox" class="box">
-        <h2>Send sBCH</h2>
-        <input type="text" id="address" placeholder="Enter Address">
-        <input type="number" id="amount" placeholder="Enter Amount">
-        <button id="maxAmount" onclick="maxAmount();">Max</button>
-
-        <div id="confirm">
-            <button class="btn" onclick="closeSend();">Close</button>
-            <button class="btn" onclick="withdraw();">Send</button>
+            <div id="confirm">
+                <button class="btn" onclick="closeSend();">Close</button>
+                <button class="btn" onclick="withdraw();">Send</button>
+            </div>
         </div>
-    </div>
 
-    <div id="accountBox" class="box">
-        <!-- <small>Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</small> -->
-        <button class="btn-2">Reset Account</button>
-        <button class="btn-2">Private Key</button>
-        <button class="btn-2">Mnemonic</button>
+        <div id="accountBox" class="box">
+            <div class="infoBox">
+                <h3>Mnemonic</h3>
+                <p id="showMnemonic"></p>
+                <button class="btn-2" onclick="copyMnemonic();">Copy</button>
 
-        <button id="closeAccount" class="btn" onclick="closeAccount();">Close</button>
+            </div>
+            <!-- <div class="infoBox">
+                <h3>Private Key</h3>
+                <p id="showKey"></p>
+                <button class="btn-2" onclick="copyKey();">Copy</button>
+            </div> -->
+            <div class="infoBox">
+                <!-- <small>Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</small> -->
+                <h3>Reset Account</h3>
+                <p>Backup your wallet first, by writing down your 12-word mnemonic. Updating the configuration will
+                    restart the app.</p>
+                <button class="btn-2" onclick="resetFunction();">Reset</button>
+            </div>
+            <button id="closeAccount" class="btn" onclick="closeAccount();">Close</button>
+        </div>
+
+         
+        <!-- ---Ignore this--- -->
+        <!-- <div id="createBox" class="box">
+            <h2>Create Token</h2>
+            <label for="tokenName">Name</label>
+            <input type="text" id="tokenName">
+            <label for="tokenTicker">Symbol</label>
+            <input type="text" id="tokenTicker">
+            <label for="tokenDecimals">Decimals</label>
+            <input type="number" id="tokenDecimals" min="0">
+            <label for="tokenQuantity">Quantity</label>
+            <input type="number" id="tokenQuantity">
+            <label for="endMint">EndMintButton</label>
+            <select name="endMint" id="endMint">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+            <input type="checkbox" id="mint">
+            <button onclick="createToken();">Create</button>
+        </div> -->
     </div>
-</div>
 
 </body>
 
