@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>smart wallet</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
     <link rel="stylesheet" href="bch.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
@@ -34,9 +38,10 @@
             </div>
 
             <div id="menuBox">
-                <li id="txLink" onclick="transaction();"></li>
+                <!-- <li id="txLink" onclick="transaction();"></li> -->
                 <li onclick="openAccount();">Account</li>
-                <!-- <li>CreateToken</li> -->
+                <li onclick="openTransaction();">Transaction</li>
+                <li onclick="resetFunction()">Reset</li>
             </div>
 
             <div id="walletBalance"></div>
@@ -47,8 +52,9 @@
         </div>
 
         <div id="receiveBox" class="box">
+            <h2>Receive sBCH</h2>
             <p style="text-align: center;">
-                <img src="https://cdn.mainnet.cash/wait.svg" style="width: 15em;" id="deposit">
+                <img src="https://cdn.mainnet.cash/wait.svg" style="width: 20rem;" id="deposit">
             </p>
             <div id="receiveAdd">
                 <input id="walletAddress2" readonly>
@@ -67,52 +73,31 @@
                 <button class="btn" onclick="closeSend();">Close</button>
                 <button class="btn" onclick="withdraw();">Send</button>
             </div>
+            <div id="loderBox">
+                <div class="loder"></div>
+            </div>
         </div>
 
         <div id="accountBox" class="box">
-            <div class="infoBox">
-                <h3>Mnemonic</h3>
-                <p id="showMnemonic"></p>
-                <button class="btn-2" onclick="copyMnemonic();">Copy</button>
 
+            <div id="seedMainBox">
+                <h2>12 word seed phrace</h2>
+                <div id="seedBox"></div>
+                <button class="btn2" id="copybtn">copy</button>
+                <button class="btn2" id="show-hide" onclick="toggleShow();">show</button>
             </div>
-            <!-- <div class="infoBox">
-                <h3>Private Key</h3>
-                <p id="showKey"></p>
-                <button class="btn-2" onclick="copyKey();">Copy</button>
-            </div> -->
-            <div class="infoBox">
-                <!-- <small>Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</small> -->
-                <h3>Reset Account</h3>
-                <p>Backup your wallet first, by writing down your 12-word mnemonic. Updating the configuration will
-                    restart the app.</p>
-                <button class="btn-2" onclick="resetFunction();">Reset</button>
-            </div>
+
             <button id="closeAccount" class="btn" onclick="closeAccount();">Close</button>
         </div>
 
-         
-        <!-- ---Ignore this--- -->
-        <!-- <div id="createBox" class="box">
-            <h2>Create Token</h2>
-            <label for="tokenName">Name</label>
-            <input type="text" id="tokenName">
-            <label for="tokenTicker">Symbol</label>
-            <input type="text" id="tokenTicker">
-            <label for="tokenDecimals">Decimals</label>
-            <input type="number" id="tokenDecimals" min="0">
-            <label for="tokenQuantity">Quantity</label>
-            <input type="number" id="tokenQuantity">
-            <label for="endMint">EndMintButton</label>
-            <select name="endMint" id="endMint">
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
-            <input type="checkbox" id="mint">
-            <button onclick="createToken();">Create</button>
-        </div> -->
-    </div>
+        <div id="transactionBox">
+            <h2>Transactions</h2>
+            <div id="thbox"></div>
+            <button id="closeTransaction" class="btn" onclick="closeTransaction();">Close</button>
 
+        </div>
+
+    </div>
 </body>
 
 </html>
